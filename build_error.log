@@ -1,0 +1,69 @@
+
+> 06-notehub-nextjs@0.1.0 build
+> next build
+
+тЦ▓ Next.js 16.1.1 (Turbopack)
+- Environments: .env
+
+  Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 3 errors:
+./app/notes/NoteDetails.client.tsx:6:1
+Export fetchNoteById doesn't exist in target module
+  4 | import { useQuery } from "@tanstack/react-query";
+  5 | import { useParams } from "next/navigation";
+> 6 | import { fetchNoteById } from "@/lib/api";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import css from "./NoteDetails.module.css";
+  8 | export default function NoteDetailsClient() {
+  9 |   const $ = _c(19);
+
+The export fetchNoteById was not found in module [project]/lib/api.ts [app-client] (ecmascript).
+Did you mean to import fetchNotes?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./app/notes/NoteDetails.client.tsx
+    ./app/notes/[id]/page.tsx
+
+
+./app/notes/NoteDetails.client.tsx:5:1
+Export fetchNoteById doesn't exist in target module
+  3 | import { useQuery } from "@tanstack/react-query";
+  4 | import { useParams } from "next/navigation";
+> 5 | import { fetchNoteById } from "@/lib/api";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import css from "./NoteDetails.module.css";
+  7 |
+  8 | export default function NoteDetailsClient() {
+
+The export fetchNoteById was not found in module [project]/lib/api.ts [app-ssr] (ecmascript).
+Did you mean to import fetchNotes?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./app/notes/NoteDetails.client.tsx
+    ./app/notes/[id]/page.tsx
+
+
+./app/notes/[id]/page.tsx:6:1
+Export fetchNoteById doesn't exist in target module
+  4 |   dehydrate,
+  5 | } from "@tanstack/react-query";
+> 6 | import { fetchNoteById } from "@/lib/api";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 | import NoteDetailsClient from "../NoteDetails.client";
+  8 |
+  9 | interface NoteDetailsPageProps {
+
+The export fetchNoteById was not found in module [project]/lib/api.ts [app-rsc] (ecmascript).
+Did you mean to import fetchNotes?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+
+    at <unknown> (./app/notes/NoteDetails.client.tsx:6:1)
+    at <unknown> (./app/notes/NoteDetails.client.tsx:5:1)
+    at <unknown> (./app/notes/[id]/page.tsx:6:1)
