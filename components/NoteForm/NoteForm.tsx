@@ -2,10 +2,10 @@
 
 import css from "./NoteForm.module.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createNote } from "@/lib/api";
 import type { CreateNoteParams, NoteTag } from "@/types/note";
 import { useRouter } from "next/navigation";
 import { useNoteStore, initialDraft } from "@/lib/store/noteStore";
+import { createNote } from "@/lib/api/clientApi";
 
 export default function NoteForm() {
   const router = useRouter();
@@ -41,7 +41,7 @@ export default function NoteForm() {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
     setDraft({ [name]: value });
