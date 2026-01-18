@@ -7,7 +7,7 @@ import { logout } from "@/lib/api/clientApi";
 import { useRouter } from "next/navigation";
 
 export default function AuthNavigation() {
-  const { isAuthenticated, clearIsAuthenticated } = useAuthStore();
+  const { user, isAuthenticated, clearIsAuthenticated } = useAuthStore();
   const router = useRouter();
 
   const handleLogout = async () => {
@@ -29,7 +29,7 @@ export default function AuthNavigation() {
             </Link>
           </li>
           <li className={css.navigationItem}>
-            <p className={css.userEmail}>User email</p>
+            <p className={css.userEmail}>{user?.username ?? "User"}</p>
             <button className={css.logoutButton} onClick={handleLogout}>
               Logout
             </button>
