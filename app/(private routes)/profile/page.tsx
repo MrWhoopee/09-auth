@@ -1,34 +1,34 @@
-"use client";
-
 import Image from "next/image";
 import css from "./ProfilePage.module.css";
 import Link from "next/link";
-import { useAuthStore } from "@/lib/store/authStore";
+import { getMe } from "@/lib/api/serverApi";
+import { Metadata } from "next";
 
-// export const metadata: Metadata = {
-//   title: "Profile | NoteHub",
-//   description: "View and manage your personal information on NoteHub.",
-//   openGraph: {
-//     title: "Profile | NoteHub",
-//     description: "View and manage your personal information on NoteHub.",
-//     url: `https://vercel.app/profile`,
+export const metadata: Metadata = {
+  title: "Profile | NoteHub",
+  description: "View and manage your personal information on NoteHub.",
+  openGraph: {
+    title: "Profile | NoteHub",
+    description: "View and manage your personal information on NoteHub.",
+    url: "https://09-auth-pearl-chi.vercel.app//profile",
 
-//     images: [
-//       {
-//         url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
-//         width: 1200,
-//         height: 630,
-//         alt: "NoteHub",
-//       },
-//     ],
-//   },
-// };
+    images: [
+      {
+        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+        width: 1200,
+        height: 630,
+        alt: "NoteHub",
+      },
+    ],
+  },
+};
 
-export default function Profile() {
-  const { user } = useAuthStore();
-  if (!user) {
-    return null;
-  }
+export default async function Profile() {
+  const user = await getMe();
+
+  // if (!user) {
+  //   return null;
+  // }
   return (
     <main className={css.mainContent}>
       <div className={css.profileCard}>

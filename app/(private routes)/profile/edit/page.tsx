@@ -16,7 +16,7 @@ export default function EditProfilePage() {
     const username = formData.get("username") as string;
     try {
       if (user) {
-        const updateUser = await updateMe({ email: user.email, username });
+        const updateUser = await updateMe({ username });
         setUser(updateUser);
       }
       router.push("/profile");
@@ -46,6 +46,7 @@ export default function EditProfilePage() {
         />
 
         <form className={css.profileInfo} action={handleSubmit}>
+          {error && <p className={css.error}>{error}</p>}
           <div className={css.usernameWrapper}>
             <label htmlFor="username">Username:</label>
             <input
@@ -55,7 +56,6 @@ export default function EditProfilePage() {
               defaultValue={user?.username}
               className={css.input}
             />
-            {error && <p>Some troubles with server or with u</p>}
           </div>
 
           <p>Email: {user?.email}</p>

@@ -6,7 +6,7 @@ import {
 import NotesClient from "./Notes.client";
 import { NoteTag } from "@/types/note";
 import type { Metadata } from "next";
-import { fetchNotes } from "@/lib/api/clientApi";
+import { fetchNotes } from "@/lib/api/serverApi";
 const PER_PAGE = 10;
 
 interface Props {

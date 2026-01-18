@@ -1,7 +1,18 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 interface Props {
   children: React.ReactNode;
 }
 
-export default function SingUpLayout({ children }: Props) {
+export default function AuthLayout({ children }: Props) {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.refresh();
+  }, [router]);
+
   return <>{children}</>;
 }

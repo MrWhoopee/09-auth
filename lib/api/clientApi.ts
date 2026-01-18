@@ -21,7 +21,6 @@ interface AuthPayload {
 }
 
 interface UpdateMe {
-  email: string;
   username: string;
 }
 
@@ -47,28 +46,28 @@ export async function fetchNoteById(id: string): Promise<Note> {
   return res.data;
 }
 
-export async function register(userData: AuthPayload) {
+export async function register(userData: AuthPayload): Promise<User> {
   const { data } = await nextApi.post<User>("auth/register", userData);
   return data;
 }
-export async function login(userData: AuthPayload) {
+export async function login(userData: AuthPayload): Promise<User> {
   const { data } = await nextApi.post<User>("auth/login", userData);
   return data;
 }
 
-export async function logout() {
+export async function logout(): Promise<void> {
   const { data } = await nextApi.post("auth/logout");
   return data;
 }
-export async function checkSession() {
+export async function checkSession(): Promise<boolean> {
   const { data } = await nextApi.get("auth/session");
   return data.success;
 }
-export async function getMe() {
+export async function getMe(): Promise<User> {
   const { data } = await nextApi.get("users/me");
   return data;
 }
-export async function updateMe(userData: UpdateMe) {
+export async function updateMe(userData: UpdateMe): Promise<User> {
   const { data } = await nextApi.patch("users/me", userData);
   return data;
 }
