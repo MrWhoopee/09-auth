@@ -62,7 +62,7 @@ export async function logout() {
 }
 export async function checkSession() {
   const { data } = await nextApi.get("auth/session");
-  return data;
+  return data.success;
 }
 export async function getMe() {
   const { data } = await nextApi.get("users/me");

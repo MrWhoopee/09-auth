@@ -58,7 +58,7 @@ export default function EditProfilePage() {
             {error && <p>Some troubles with server or with u</p>}
           </div>
 
-          <p>Email: user_email@example.com</p>
+          <p>Email: {user?.email}</p>
 
           <div className={css.actions}>
             <button type="submit" className={css.saveButton}>
