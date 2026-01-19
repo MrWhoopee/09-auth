@@ -56,18 +56,17 @@ export async function login(userData: AuthPayload): Promise<User> {
 }
 
 export async function logout(): Promise<void> {
-  const { data } = await nextApi.post("auth/logout");
-  return data;
+  await nextApi.post("auth/logout");
 }
 export async function checkSession(): Promise<boolean> {
   const { data } = await nextApi.get("auth/session");
   return data.success;
 }
 export async function getMe(): Promise<User> {
-  const { data } = await nextApi.get("users/me");
+  const { data } = await nextApi.get<User>("users/me");
   return data;
 }
 export async function updateMe(userData: UpdateMe): Promise<User> {
-  const { data } = await nextApi.patch("users/me", userData);
+  const { data } = await nextApi.patch<User>("users/me", userData);
   return data;
 }
